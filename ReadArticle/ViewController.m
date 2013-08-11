@@ -101,8 +101,7 @@ CGFloat const ParallaxRate = 0.4;
   if (scrollView.contentOffset.y >= 0) {
     self.imageView.y = -floorf(scrollView.contentOffset.y*ParallaxRate);
     self.blurredImageView.y = -floorf(scrollView.contentOffset.y*ParallaxRate);
-    self.gradientView.y = -floorf(scrollView.contentOffset.y*ParallaxRate)+297;
-    NSLog(@"POS %f", self.gradientView.y);
+    self.gradientView.y = floorf(self.imageView.y + self.imageView.height - 2);
   } else if (scrollView.contentOffset.y < 0) {
     self.imageView.y = 0;
     self.blurredImageView.y = 0;
