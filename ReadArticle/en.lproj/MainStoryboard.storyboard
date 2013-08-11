@@ -20,11 +20,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view alpha="0.0" contentMode="scaleToFill" id="AGj-RB-Jsk">
+                            <view alpha="0.0" contentMode="scaleToFill" id="AGj-RB-Jsk" userLabel="Gradient">
                                 <rect key="frame" x="0.0" y="295" width="1024" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8IF-xz-76a">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="8IF-xz-76a">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
