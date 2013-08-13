@@ -54,7 +54,8 @@ CGFloat const ParallaxRate = 0.4;
   NSString *path = [[NSBundle mainBundle] pathForResource:@"data"
                                                    ofType:@"json"];
   NSData *data = [NSData dataWithContentsOfFile:path];
-  self.article = [NSJSONSerialization JSONObjectWithData: data options: kNilOptions error: nil];
+  NSDictionary *json = [NSJSONSerialization JSONObjectWithData: data options: kNilOptions error: nil];
+  self.article = json[@"article"];
 
   self.imageView.image = [UIImage imageNamed: self.article[@"photo"][@"name"]];
   self.blurredImageView.image = [[UIImage imageNamed: self.article[@"photo"][@"name"]] applyLightEffect];
