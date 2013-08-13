@@ -226,6 +226,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "The Washington Post";
+				TargetAttributes = {
+					8DD3BC3B17B5752600BB93A8 = {
+						DevelopmentTeam = QBVUTY6MV8;
+					};
+				};
 			};
 			buildConfigurationList = 8DD3BC3717B5752600BB93A8 /* Build configuration list for PBXProject "ReadArticle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -366,10 +371,13 @@
 		8DD3BC6017B5752600BB93A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadArticle/ReadArticle-Prefix.pch";
 				INFOPLIST_FILE = "ReadArticle/ReadArticle-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -377,10 +385,13 @@
 		8DD3BC6117B5752600BB93A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadArticle/ReadArticle-Prefix.pch";
 				INFOPLIST_FILE = "ReadArticle/ReadArticle-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -77,11 +77,22 @@ CGFloat const ParallaxRate = 0.4;
   NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString: self.article[@"content"]];
   [text setAttributes: @{NSFontAttributeName: [UIFont fontWithName: @"FranklinITCStd-Light" size: 36]} range: NSMakeRange(0, 1)];
   [text setAttributes: @{NSFontAttributeName: [UIFont fontWithName: @"FranklinITCStd-Light" size: 24]} range: NSMakeRange(1, text.length-1)];
+
   self.textView.attributedText = text;
-  self.textView.height = self.textView.contentSize.height;
+  CGFloat height = self.textView.contentSize.height;
+  if ([self.textView respondsToSelector: @selector(layoutManager)]) {
+    self.textView.height = -1;
+    CGRect rect = [self.textView.layoutManager
+                   boundingRectForGlyphRange:NSMakeRange(0, self.textView.text.length)
+                   inTextContainer:self.textView.textContainer];
+    height = rect.size.height;
+  }
+  self.textView.height = height;
+
+  self.textView.scrollEnabled = NO;
   self.textView.y = self.bylineLbl.y + self.bylineLbl.height + 8;
 
-  self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width, self.textView.y + self.textView.contentSize.height + 60);
+  self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width, self.textView.y + height + 60);
 }
 
 #pragma mark - UIScrollViewDelegate
