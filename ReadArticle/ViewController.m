@@ -12,6 +12,15 @@
 #import "MSLabel.h"
 #import <QuartzCore/QuartzCore.h>
 
+#ifdef __IPHONE_7_0
+#define LayoutManagerRect(textView) \
+  [textView.layoutManager \
+   boundingRectForGlyphRange:NSMakeRange(0, textView.text.length) \
+   inTextContainer:textView.textContainer]
+#else
+#define LayoutManagerRect(textView) CGRectZero
+#endif
+
 CGFloat const BlurOffset = 260;
 CGFloat const BlurMaxAlpha = 0.86;
 CGFloat const ParallaxRate = 0.4;
@@ -82,9 +91,7 @@ CGFloat const ParallaxRate = 0.4;
   CGFloat height = self.textView.contentSize.height;
   if ([self.textView respondsToSelector: @selector(layoutManager)]) {
     self.textView.height = -1;
-    CGRect rect = [self.textView.layoutManager
-                   boundingRectForGlyphRange:NSMakeRange(0, self.textView.text.length)
-                   inTextContainer:self.textView.textContainer];
+    CGRect rect = LayoutManagerRect(self.textView);
     height = rect.size.height;
   }
   self.textView.height = height;

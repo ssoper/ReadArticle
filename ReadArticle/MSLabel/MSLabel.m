@@ -11,6 +11,18 @@
 
 #import "MSLabel.h"
 
+#ifdef __IPHONE_6_0
+#define AlignCenter NSTextAlignmentCenter
+#define AlignRight NSTextAlignmentRight
+#define LineBreakModeClip NSLineBreakByClipping
+#define LineBreakModeWord NSLineBreakByWordWrapping
+#else
+#define AlignCenter UITextAlignmentCenter
+#define AlignRight UITextAlignmentRight
+#define LineBreakModeClip UILineBreakModeClip
+#define LineBreakModeWord UILineBreakModeWordWrap
+#endif
+
 // small buffer to allow for characters like g,y etc
 static const int kAlignmentBuffer = 5;
 
@@ -108,10 +120,9 @@ static const int kAlignmentBuffer = 5;
     }
     
     // calculate draw X based on textAlignmentment
-    
-    if (self.textAlignment == UITextAlignmentCenter) {
+    if (self.textAlignment == AlignCenter) {
       drawX = floorf((self.frame.size.width - [line sizeWithFont:self.font].width) / 2);
-    } else if (self.textAlignment == UITextAlignmentRight) {
+    } else if (self.textAlignment == AlignRight) {
       drawX = (self.frame.size.width - [line sizeWithFont:self.font].width);
     }
     
@@ -119,7 +130,7 @@ static const int kAlignmentBuffer = 5;
     
     CGContextSetShadowWithColor(UIGraphicsGetCurrentContext(), self.shadowOffset, 0, self.shadowColor.CGColor);
     
-    [line drawAtPoint:CGPointMake(drawX, drawY) forWidth:self.frame.size.width withFont:self.font fontSize:self.font.pointSize lineBreakMode:UILineBreakModeClip baselineAdjustment:UIBaselineAdjustmentNone];
+    [line drawAtPoint:CGPointMake(drawX, drawY) forWidth:self.frame.size.width withFont:self.font fontSize:self.font.pointSize lineBreakMode:LineBreakModeClip baselineAdjustment:UIBaselineAdjustmentNone];
   }
 }
 
@@ -148,7 +159,7 @@ static const int kAlignmentBuffer = 5;
 
 - (NSArray *)stringsFromText:(NSString *)string {
   
-  if (self.lineBreakMode == UILineBreakModeWordWrap) {
+  if (self.lineBreakMode == LineBreakModeWord) {
     return [self stringsWithWordsWrappedFromString:string];
   }
   
